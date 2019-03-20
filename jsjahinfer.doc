@@ -1,0 +1,42 @@
+val premise = asm_rule;
+val L1 = premise ¬p ± q®;
+val L2 = premise ¬p ´ ³q ² ³r®;
+val L3 = ±_left_elim L1;
+val L4 = ±_right_elim L1;
+val L5 = ´_elim L2 L3;
+val L6 = ³_³_intro L4; 
+val L7 = ²_cancel_rule L5 L6;
+val L8 = premise ¬s ´ r®;
+val L9 = modus_tollens_rule L8 L7;
+
+val M1 = premise ¬p´t®;
+val M2 = premise ¬³t:BOOL®;
+val M3 = modus_tollens_rule M1 M2;
+val M4 = ²_right_intro ¬q:BOOL® M3;
+val M5 = premise ¬³p ² q ´ r®;
+val M6 = ´_elim M5 M4;
+val M7 = ±_intro M3 M6;
+val M8 = premise ¬³p ± r ´ ³s®;
+val M9 = ´_elim M8 M7;
+val M10 = premise ¬s ² ³q®;
+val M11 = ²_cancel_rule M10 M9;
+
+val N1 = premise ¬³t:BOOL®;
+val N2 = premise ¬t ² s®;
+val N3 = ²_cancel_rule N2 N1;
+val N4 = ²_right_intro ¬r:BOOL® N3;
+val N5 = premise ¬s ² r ´ ³p®; 
+val N6 = ´_elim N5 N4;
+val N7 = premise ¬q ´ p®;
+val N8 = modus_tollens_rule N7 N6;
+
+val P1 = premise ¬r ± s®;
+val P2 = ±_right_elim P1;
+val P3 = ±_left_elim P1;
+val P4 = ²_right_intro ¬q:BOOL® P2;
+val P5 = premise ¬s ² q ´ p®;
+val P6 = ´_elim P5 P4; 
+val P7 = premise ¬q ² ³r®;
+val P8 = ³_³_intro P3;
+val P9 = ²_cancel_rule P7 P8;
+val P10 = ±_intro P6 P9;
